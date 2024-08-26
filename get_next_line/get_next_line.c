@@ -66,12 +66,12 @@ char	*get_next_line(int fd)
 	static char	buf[BUFFER_SIZE + 1];
 	char		*line;
 	char		*newline;
-	int			countread;
+	int			count;
 
 	line = ft_strdup(buf);
-	while (!(newline = ft_strchr(line, '\n')) && (countread = read(fd, buf, BUFFER_SIZE)))
+	while (!(newline = ft_strchr(line, '\n')) && (count = read(fd, buf, BUFFER_SIZE)))
 	{
-		buf[countread] = '\0';
+		buf[count] = '\0';
 		line = ft_strjoin(line, buf);
 	}
 	if (ft_strlen(line) == 0)
